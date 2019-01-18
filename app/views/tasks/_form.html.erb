@@ -13,40 +13,35 @@
 
   <div class="field">
     <%= f.label :title %>
-    <%= f.text_field :title, :class => "span5" %>
+    <%= f.text_field :title, :class => "span12" %>
   </div>
   <div class="field">
     <%= f.label :description %>
-    <%= f.text_area :description, :class => "span5"  %>
+    <%= f.text_area :description, :class => "span12"  %>
   </div>
   <div class="field">
     <%= f.label :duedate %>
-    <%= f.date_select :duedate %>
+    <%= f.date_field :duedate, :class => "span12" %>
   </div>
   <div class="field">
-    <%= f.label :tstage %>
-    <%= f.text_field :tstage %>
+    <label>Stage</label>
+    <%= f.select :tstage, ['to do', 'in progress','completed']%>
   </div>
   <div class="field">
-    <%= f.label :tcategories %>
-     <% ["Folder", "Fax", "Email"].each do |tcategory| %>
-    <li><%= check_box_tag "task[tcategories][]", tcategory, @task.tcategories.include?(tcategory), id: "task_tcategories_#{tcategory}" %> <%= tcategory %></li>
-
-
+  <label>Task categories</label>
+    <% ["design","development","logistics","administration","marketing"].each do |tcategory| %>
+    <%= check_box_tag "task[tcategories][]", tcategory, @task.tcategories.include?(tcategory), id: "task_tcategories_#{tcategory}" %> <%= tcategory %><br/>
   <% end %>
-
-
-
-
-
   </div>
   <div class="field">
     <%= f.label :coworker %>
-    <%= f.number_field :coworker %>
+   <%= f.select(:coworker, User.all.collect {|p| [ p.name, p.id ] }, 
+                                           { :prompt => "Please select"}, 
+                                           { :multiple => true, :size => 5 }) %>
   </div>
   <div class="field">
-    <%= f.label :creator %>
-    <%= f.number_field :creator %>
+     <label>Creator:<%= current_user.name %></label>
+    <%= f.hidden_field :creator, :value => current_user.id %>
   </div>
   <div class="actions">
     <%= f.submit %>

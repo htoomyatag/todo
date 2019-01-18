@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20190118114931) do
     t.date     "duedate"
     t.string   "tstage"
     t.string   "tcategories", default: "--- []\n"
-    t.integer  "coworker"
+    t.string   "coworker",    default: "--- []\n"
     t.integer  "creator"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
