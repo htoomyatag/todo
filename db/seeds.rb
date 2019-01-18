@@ -6,5 +6,3 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 
 
-
-User.create(email: 'htoomyataung@hma.com' ,name: 'htoo', password_digest: '12345678')

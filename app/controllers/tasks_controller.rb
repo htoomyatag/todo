@@ -3,6 +3,11 @@ class TasksController < ApplicationController
   before_filter :authorize
   # GET /tasks
   # GET /tasks.json
+  def dashboard
+       @task = Task.new
+       @tasks = Task.all
+  end
+
   def index
     @tasks = Task.all
   end
@@ -28,7 +33,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.html { redirect_to dashboard_path, notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new }
