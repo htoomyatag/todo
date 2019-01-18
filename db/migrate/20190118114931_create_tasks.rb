@@ -5,7 +5,7 @@ class CreateTasks < ActiveRecord::Migration
       t.text :description
       t.date :duedate
       t.string :tstage
-      t.string :tcategory
+      t.string :tcategories, array: true, default: []
       t.integer :coworker
       t.integer :creator
 

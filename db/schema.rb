@@ -18,11 +18,11 @@ ActiveRecord::Schema.define(version: 20190118114931) do
     t.text     "description"
     t.date     "duedate"
     t.string   "tstage"
-    t.string   "tcategory"
+    t.string   "tcategories", default: "--- []\n"
     t.integer  "coworker"
     t.integer  "creator"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   create_table "users", force: :cascade do |t|

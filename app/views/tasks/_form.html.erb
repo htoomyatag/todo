@@ -28,8 +28,17 @@
     <%= f.text_field :tstage %>
   </div>
   <div class="field">
-    <%= f.label :tcategory %>
-    <%= f.text_field :tcategory %>
+    <%= f.label :tcategories %>
+     <% ["Folder", "Fax", "Email"].each do |tcategory| %>
+    <li><%= check_box_tag "task[tcategories][]", tcategory, @task.tcategories.include?(tcategory), id: "task_tcategories_#{tcategory}" %> <%= tcategory %></li>
+
+
+  <% end %>
+
+
+
+
+
   </div>
   <div class="field">
     <%= f.label :coworker %>
