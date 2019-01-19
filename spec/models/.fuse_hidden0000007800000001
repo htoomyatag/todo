@@ -1,6 +1,8 @@
 require 'rails_helper'
 require 'capybara/rails'
 
+require 'spec_helper'
+
 
 feature 'sign_in' do
   scenario 'sign in with correct email and password' do
