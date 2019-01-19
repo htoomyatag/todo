@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<table class="table table-bordered">
+<table class="table table-bordered" style="font-size:12px;">
   <thead>
     <tr>
       <th>Title</th>
@@ -10,7 +10,11 @@
       <th>Categories</th>
       <th>Co-workers</th>
       <th>Creator</th>
+      <% if current_user %>
       <th colspan="2"></th>
+      <% else %>
+
+      <% end %>
     </tr>
   </thead>
 
@@ -24,8 +28,12 @@
         <td><%= task.tcategories %></td>
         <td><%= task.coworker %></td>
         <td><%= task.creator %></td>
-        <td><%= link_to 'Update', taskupdate_path(:id =>task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user %>
+        <td><%= link_to 'Update', taskupdate_path(:id =>task),  :class=>"btn btn-success btn-sm" %></td>
+        <td><%= link_to 'Destroy', task, method: :delete,:class=>"btn btn-danger btn-sm", data: { confirm: 'Are you sure?' } %></td>
+        <% else %>
+
+        <% end %>
       </tr>
     <% end %>
   </tbody>

@@ -40,10 +40,10 @@
                                            { :multiple => true, :size => 5 }) %>
   </div>
   <div class="field">
-     <label>Creator:<%= current_user.name %></label>
-    <%= f.hidden_field :creator, :value => current_user.id %>
+     <label>Creator:<%= current_user.name if current_user %></label>
+    <%= f.hidden_field :creator, :value => current_user.id if current_user %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class=>"btn btn-large btn-block btn-primary" %>
   </div>
 <% end %>

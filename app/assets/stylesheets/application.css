@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+
+#task_tstage, #task_coworker{
+	width: 190px;
+}
+
+#mynav{
+	position: relative;
+	top: 5px;
+}

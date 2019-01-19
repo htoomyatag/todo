@@ -1,8 +1,20 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span2" >
-      <legend>New Task</legend>
-      	 <%= render 'form' %>
+      <% if current_user %>
+        <legend><%= @taskform %></legend>
+        	 <%= render 'new' %>
+      <% else %>
+          <div class="alert alert-block">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <h4>Warning!</h4>
+            You don't have permission to create task.
+            Please Login or Register.
+        </div>
+         
+      <% end %>
+    
+
     </div>
     <div class="span10" >
       <legend>Task List</legend>

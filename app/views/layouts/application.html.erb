@@ -7,11 +7,29 @@
   <%= csrf_meta_tags %>
 </head>
 
-	<% if current_user %>
-	  Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
-	<% else %>
-	  <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
-	<% end %>
+	<div class="navbar-inner">
+
+	 <span id="mynav">
+			<% if current_user %>
+			  <span>Signed in as: <b> <%= current_user.name %></b> </span>
+			  <%= link_to "Logout", '/logout', :class=>"btn" %>
+			<% else %>
+			  <%= form_tag '/login', :class=>"navbar-form pull-left" do %>
+
+				  Email: <%= text_field_tag :email %>
+				  Password: <%= password_field_tag :password %>
+				  <%= submit_tag "Login", :class=>"btn" %>
+
+			<% end %>
+
+
+			<% end %>
+	</span>
+
+
+    </div>
+
+
 	
 	<body>
 
