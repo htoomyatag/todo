@@ -7,12 +7,25 @@
 
 
 
-#users = User.create([
+users = User.create([
 
 
-#{name: "htoomyatag1", email: "htoomyatag1@gmail.com", password: "12345678", password_confirmation: "12345678"},
-#{name: "htoomyatag2", email: "htoomyatag2@gmail.com", password: "12345678", password_confirmation: "12345678"},
-#{name: "theldarlykhin", email: "theldarlykhin.webdev@gmail.com", password: "12345678", password_confirmation: "12345678"},
+{name: "htoomyatag1", email: "htoomyatag1@gmail.com", password: "12345678", password_confirmation: "12345678"},
+{name: "htoomyatag2", email: "htoomyatag2@gmail.com", password: "12345678", password_confirmation: "12345678"},
+{name: "htoomyatag3", email: "htoomyatag3@gmail.com", password: "12345678", password_confirmation: "12345678"},
 
 
- #   ])
+   ])
+
+
+
+tasks = Task.create([
+
+
+{title: "task1", description: "task1desc", tstage: "to do",user_id: 1, coworker:"[2,3]", tcategories:"[design,development]"},
+{title: "task2", description: "task2desc", tstage: "in progress",user_id: 2, coworker:"[1,3]", tcategories:"[logistics,administration]"},
+{title: "task3", description: "task3desc", tstage: "completed",user_id: 3, coworker:"[1,2]", tcategories:"[marketing]"}
+
+
+
+   ])
