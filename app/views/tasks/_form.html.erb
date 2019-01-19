@@ -80,16 +80,16 @@
 function choice1(select) {
 
     var choose_stage = select.options[select.selectedIndex].text;
-     alert(choose_stage);
+  
      $.ajax({
             type: 'GET',
             url: '/change_stage/<%= @task.id %>/'+choose_stage,
             success: function(content) {
                
-            }
-        });
+            }   
+        });location.reload();
         return false; // to stop link
-
+ 
 
 }
 
