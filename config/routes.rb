@@ -11,13 +11,14 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
 
   get '/dashboard' => 'tasks#dashboard'
+  get '/dashboard/:id/taskupdate' => 'tasks#dashboard', as: :taskupdate
 
 
   # You can have the root of your site routed with "root"
   root 'tasks#dashboard'
 
   # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

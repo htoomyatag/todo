@@ -4,8 +4,12 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def dashboard
-       @task = Task.new
        @tasks = Task.all
+       if params[:id].nil?
+         @task = Task.new
+       else
+         @task = Task.find(params[:id])
+       end
   end
 
   def index
@@ -47,7 +51,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.html { redirect_to dashboard_path, notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
