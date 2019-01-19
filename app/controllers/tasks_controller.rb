@@ -5,6 +5,8 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def dashboard
        @tasks = Task.all
+
+
        if params[:id].nil?
          @task = Task.new
          @taskform = "Add New Task"
@@ -80,6 +82,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:title, :description, :duedate, :tstage, :creator, :coworker => [], :tcategories => [])
+      params.require(:task).permit(:title, :description, :duedate, :tstage, :user_id, :coworker => [], :tcategories => [])
     end
 end

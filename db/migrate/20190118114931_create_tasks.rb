@@ -7,7 +7,7 @@ class CreateTasks < ActiveRecord::Migration
       t.string :tstage
       t.string :tcategories, array: true, default: []
       t.string :coworker, array: true, default: []
-      t.integer :creator
+      t.integer :user_id
 
       t.timestamps null: false
     end

@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20190118114931) do
     t.string   "tstage"
     t.string   "tcategories", default: "--- []\n"
     t.string   "coworker",    default: "--- []\n"
-    t.integer  "creator"
+    t.integer  "user_id"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
   end
