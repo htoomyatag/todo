@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title, :class => "span12" %>
@@ -26,6 +27,16 @@
   <div class="field">
     <label>Stage</label>
     <%= f.select :tstage, ['to do', 'in progress','completed']%>
+
+     <select onchange="choice1(this)">
+        <option value="<%= @task.tstage %>">Change status </option>
+        <option value="to do">to do</option>
+        <option value="completed">completed</option>
+        <option value="in progress">in progress</option>
+    </select>
+
+
+
   </div>
   <div class="field">
   <label>Task categories</label>
@@ -50,3 +61,28 @@
 
 
 
+
+
+
+<script type="text/javascript">
+  
+function choice1(select) {
+
+    var choose_stage = select.options[select.selectedIndex].text;
+     alert(choose_stage);
+     $.ajax({
+            type: 'GET',
+            url: '/change_stage/<%= @task.id %>/'+choose_stage,
+            success: function(content) {
+               
+            }
+        });
+        return false; // to stop link
+
+
+}
+
+</script>
+
+ 
+ 

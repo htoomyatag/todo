@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/dashboard' => 'tasks#dashboard'
   get '/dashboard/:id/taskupdate' => 'tasks#dashboard', as: :taskupdate
 
-
+  get '/change_stage/:id/:choice_status' => 'tasks#change_stage', :as => :change_stage
   # You can have the root of your site routed with "root"
   root 'tasks#dashboard'
 

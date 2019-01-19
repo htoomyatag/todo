@@ -5,11 +5,19 @@ class TasksController < ApplicationController
   # GET /tasks.json
 
 
+   def change_stage
+       @task = Task.find(params[:id])
+       @testcoworker = @task.coworker.scan(/\d/).map(&:to_i)
+      if  @testcoworker.include? current_user.id or current_user.id == @task.user_id
+        @task.update(:tstage => params[:choice_status])
+      else
+         format.html { redirect_to dashboard_path, notice: 'Only creator and team members can edit the status!' }
+      end
+   end
 
 
   def dashboard
        @tasks = Task.all
-
        if params[:id].nil?
          @task = Task.new
          @taskform = "Add New Task"
@@ -57,12 +65,17 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1.json
   def update
     respond_to do |format|
-      if @task.update(task_params)
-        format.html { redirect_to dashboard_path, notice: 'Task was successfully updated.' }
-        format.json { render :show, status: :ok, location: @task }
+
+      if current_user.id == @task.user_id
+        if  @task.update(task_params)
+          format.html { redirect_to dashboard_path, notice: 'Task was successfully updated.' }
+          format.json { render :show, status: :ok, location: @task }
+        else
+          format.html { render :edit }
+          format.json { render json: @task.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :edit }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
+          format.html { redirect_to dashboard_path, notice: 'Only creator can edit the title. description, due date, team members and categories.' }
       end
     end
   end
