@@ -3,9 +3,12 @@ class TasksController < ApplicationController
   
   # GET /tasks
   # GET /tasks.json
+
+
+
+
   def dashboard
        @tasks = Task.all
-
 
        if params[:id].nil?
          @task = Task.new

@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<p id="notice" ><%= notice %></p>
 
 <table class="table table-bordered" style="font-size:12px;">
   <thead>
@@ -20,13 +20,14 @@
 
   <tbody>
     <% @tasks.each do |task| %>
-      <tr>
+      <tr id="mytaskstyle<%= task.id %>">
         <td><%= task.title %></td>
         <td><%= task.description %></td>
         <td><%= task.duedate %></td>
         <td><%= task.tstage %></td>
         <td><%= task.tcategories %></td>
-        <td><%= task.coworker %></td>
+        <td><%= User.where(:id => JSON.parse(task.coworker)).collect {|p| [ p.name] } %>
+        </td>
         <td><%= task.user.name %></td>
         <% if current_user %>
         <td><%= link_to 'Update', taskupdate_path(:id =>task),  :class=>"btn btn-success btn-sm" %></td>
@@ -40,3 +41,16 @@
 </table>
 
 <br>
+
+
+<style type="text/css">
+  
+#mytaskstyle<%= @task.id %> {
+
+  background-color: #329bff;
+  color: white;
+  font-size: 13px;
+}
+
+
+</style>

@@ -17,7 +17,9 @@
 
     </div>
     <div class="span10" >
-      <legend>Task List</legend>
+      <legend>Task List
+        <%= link_to "New task", '/dashboard', :class=>"btn", :id=>"newt" %>
+      </legend>
       	  <%= render 'index' %>
     </div>
   </div>
