@@ -83,10 +83,16 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
-    @task.destroy
-    respond_to do |format|
-      format.html { redirect_to dashboard_path, notice: 'Task was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_user.id == @task.user_id 
+
+      @task.destroy
+      respond_to do |format|
+        format.html { redirect_to dashboard_path, notice: 'Task was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+
+    else
+       redirect_to dashboard_path, notice: 'Only creator can DELETE the task' 
     end
   end
 
