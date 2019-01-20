@@ -1,0 +1,15 @@
+<div class="span3" >
+      <legend>User Profile</legend>
+       <p> Name: <%= @user.name %> </h2>
+       <p> Email: <%= @user.email %> </h2>
+       <br>
+        back to <%= link_to "Dashboard", dashboard_path %>
+</div>
+
+
+
+<div class="span12" >
+      <legend>Task List</legend>
+          <%= render '/tasks/index' %>
+</div>
+

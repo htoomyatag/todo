@@ -12,7 +12,11 @@
 	 <span id="mynav">
 			<% if current_user %>
 			  <span>Signed in as: <b> <%= current_user.name %></b> </span>
-			  <%= link_to "Logout", '/logout', :class=>"btn" %>
+			  <%= link_to "Show", controller: "users", action: "show", id: current_user.id %>
+			 
+
+
+			 <%= link_to "Logout", '/logout', :class=>"btn" %>
 			<% else %>
 			  <%= form_tag '/login', :class=>"navbar-form pull-left" do %>
 

@@ -24,13 +24,23 @@
     <% @tasks.each do |task| %>
       <tr id="mytaskstyle<%= task.id %>">
         <td><%= task.title %></td>
-        <td><%= task.description %></td>
+        <td><%= task.description[0,50] %></td>
         <td><%= task.duedate %></td>
         <td><%= task.tstage %></td>
-        <td><%= task.tcategories %></td>
-        <td><%= User.where(:id => JSON.parse(task.coworker)).collect {|p| [ p.name] } %>
+        <td>
+          <% if task.tcategories != "--- []\n"  %>
+              <%= task.tcategories %>
+          <% else %>
+          <% end %>
         </td>
-        <td><%= task.user.name %></td>
+        <td>
+           <% if task.coworker != "--- []\n"  %>
+                <%= User.where(:id => JSON.parse(task.coworker)).collect {|p| [ p.name] } %>
+           <% end %>
+        </td>
+        <td><%= task.user.name %>
+            <%= link_to "Show", controller: "users", action: "show", id: task.user.id %>
+        </td>
         <% if current_user %>
         <td><%= link_to 'Update', taskupdate_path(:id =>task),  :class=>"btn btn-success btn-sm" %></td>
         <td><%= link_to 'Destroy', task, method: :delete,:class=>"btn btn-danger btn-sm", data: { confirm: 'Are you sure?' } %></td>
@@ -47,13 +57,15 @@
 
 <style type="text/css">
   
-#mytaskstyle<%= @task.id %> {
+  <% if !@task.nil? %>
 
-  background-color: #329bff;
-  color: white;
-  font-size: 13px;
-}
+      #mytaskstyle<%= @task.id %> {
 
+        background-color: #329bff;
+        color: white;
+        font-size: 13px;
+      }
+   <% end %>
 
 </style>
 

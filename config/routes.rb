@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get '/register' => 'users#new'
   post '/users' => 'users#create'
+  get '/users/:id' => 'users#show'
 
   get '/dashboard' => 'tasks#dashboard'
   get '/dashboard/:id/taskupdate' => 'tasks#dashboard', as: :taskupdate

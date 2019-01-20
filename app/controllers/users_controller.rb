@@ -13,6 +13,12 @@ class UsersController < ApplicationController
 	  end
 	end
 
+
+	def show
+		@user = User.find(params[:id])
+		@tasks = Task.where(:user_id => @user.id)
+	end
+
 	def user_params
   	 params.require(:user).permit(:name, :email, :password, :password_confirmation)
 	end
