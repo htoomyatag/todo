@@ -14,10 +14,6 @@ User.create name: "Hari Kalanj",
          password: "12345678",
          password_confirmation: "12345678"
 
-#User.create name: "Htoo Myat",
- #        email: "htoomyatag@gmail.com",
-  #       password: "12345678",
-   #      password_confirmation: "12345678"
 
 
 # Generate 50 task to test with

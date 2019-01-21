@@ -16,7 +16,8 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@tasks = Task.where(:user_id => @user.id)
+		#@tasks = Task.where(:user_id => @user.id)
+		@tasks = Task.all.includes(:user)
 	end
 
 	def user_params
